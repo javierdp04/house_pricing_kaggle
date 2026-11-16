@@ -5,12 +5,13 @@ from pathlib import Path
 
 DATA_DIR = Path(__file__).parent
 
-load_dotenv()
+if __name__ == '__main__':
+    load_dotenv()   
 
-path = kagglehub.competition_download('home-data-for-ml-course')
+    path = kagglehub.competition_download('home-data-for-ml-course')
 
-train_data = pd.read_csv(Path(path) / 'train.csv')
-test_data = pd.read_csv(Path(path) / 'test.csv')
+    train_data = pd.read_csv(Path(path) / 'train.csv')
+    test_data = pd.read_csv(Path(path) / 'test.csv')
 
-train_data.to_csv(DATA_DIR / 'train.csv')
-test_data.to_csv(DATA_DIR / 'test.csv')
+    train_data.to_csv(DATA_DIR / 'train.csv', index=False)
+    test_data.to_csv(DATA_DIR / 'test.csv', index=False)
